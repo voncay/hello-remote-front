@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+
+    <!--
+      Front teamplate
+    -->
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="../favicon.ico"> -->
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
+    <link rel="stylesheet" href="../assets/vendor/nouislider/dist/nouislider.min.css">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="../assets/css/theme.min.css">
+
+    <!--
+      React requirements
+    -->
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -24,7 +43,58 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+    <!-- Title -->
+    <title>Jobs: Listing | Front - Multipurpose Responsive Template</title>
+
+
+    <!--
+      Js scripts for Front template
+    -->
+
+    <!-- JS Global Compulsory  -->
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script src="../assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+    <script src="../assets/vendor/hs-show-animation/dist/hs-show-animation.min.js"></script>
+    <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+    <script src="../assets/vendor/nouislider/dist/nouislider.min.js"></script>
+
+    <!-- JS Front -->
+    <script src="../assets/js/theme.min.js"></script>
+    <!-- JS Plugins Init. -->
+    <script>
+      (function() {
+        // INITIALIZATION OF MEGA MENU
+        // =======================================================
+        new HSMegaMenu('.js-mega-menu', {
+            desktop: {
+              position: 'left'
+            }
+          })
+
+
+        // INITIALIZATION OF SHOW ANIMATIONS
+        // =======================================================
+        new HSShowAnimation('.js-animation-link')
+
+
+        // INITIALIZATION OF BOOTSTRAP DROPDOWN
+        // =======================================================
+        HSBsDropdown.init()
+
+
+        // INITIALIZATION OF GO TO
+        // =======================================================
+        new HSGoTo('.js-go-to')
+
+
+        // INITIALIZATION OF NOUISLIDER`
+        // =======================================================
+        HSCore.components.HSNoUISlider.init('.js-nouislider')
+      })()
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
