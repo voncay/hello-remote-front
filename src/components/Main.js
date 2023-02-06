@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import SearchBar from './SearchBar'
+import Pagination from './Pagination'
+
 const Main = () => {
 
   // 👇️ initial value of empty string (first option)
@@ -13,6 +16,10 @@ const Main = () => {
 
   return (
     <>
+      {/* ========== SEARCH BAR ========== */}
+      <SearchBar />
+      {/* ========== END SEARCH BAR ========== */}
+
       {/* ========== MAIN CONTENT ========== */}
       <main id="content" role="main">
         {/* Card Grid */}
@@ -755,6 +762,10 @@ const Main = () => {
         {/* End Card Grid */}
       </main>
       {/* ========== END MAIN CONTENT ========== */}
+
+      {/* ========== PAGINATION ========== */}
+      <Pagination />
+      {/* ========== END PAGINATION ========== */}
     </>
   );
 };
