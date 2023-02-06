@@ -23,6 +23,9 @@ const NavBar = () => {
                 alt="Logo"
               />
             </Link>
+            <div>
+              <span><b>H</b>ello <b>R</b>emote</span>
+            </div>
             {/* End Default Logo */}
             {/* Collapse */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
