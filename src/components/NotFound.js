@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const NotFound = () => {
   return (
     <>
@@ -16,17 +18,10 @@ const NotFound = () => {
             <p className="fs-4 mb-0">
               Oops! Looks like you followed a bad link.
             </p>
-            <p className="fs-4">
-              If you think this is a problem with us, please{" "}
-              <a className="link" href="#">
-                tell us
-              </a>
-              .
-            </p>
           </div>
-          <a className="btn btn-primary" href="./index.html">
+          <Link to={'/'} className="btn btn-primary">
             Go back home
-          </a>
+          </Link>
         </div>
         {/* End Content */}
       </main>
