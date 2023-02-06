@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const NavBar = () => {
   return (
     <>
@@ -9,26 +11,22 @@ const NavBar = () => {
         <div className="container">
           <nav className="js-mega-menu navbar-nav-wrap">
             {/* Default Logo */}
-            <a
+            <Link to={'/'}
               className="navbar-brand"
               href="../demo-jobs/index.html"
               aria-label="Front"
             >
               <img
-                className="navbar-brand-logo"
+                style={{ width: '50px', height: 'auto' }}
+                // className="navbar-brand-logo"
                 src="../assets/svg/logos/android-chrome-192x192.png"
                 alt="Logo"
               />
-            </a>
+            </Link>
             {/* End Default Logo */}
             {/* Collapse */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link " href="../demo-jobs/index.html">
-                    Home
-                  </a>
-                </li>
                 <li className="nav-item">
                   <a
                     className="btn btn-primary btn-transition"
