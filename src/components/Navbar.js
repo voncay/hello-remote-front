@@ -16,7 +16,7 @@ const NavBar = () => {
             >
               <img
                 className="navbar-brand-logo"
-                src="../assets/svg/logos/logo.svg"
+                src="../assets/svg/logos/android-chrome-192x192.png"
                 alt="Logo"
               />
             </a>
