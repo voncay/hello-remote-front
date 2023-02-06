@@ -31,12 +31,17 @@ const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a
+                  <Link className="nav-link " to={'/login'}>
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
                     className="btn btn-primary btn-transition"
-                    href="../demo-jobs/post-job.html"
+                    to={'/'}
                   >
                     Post a job
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -46,7 +51,7 @@ const NavBar = () => {
       </header>
       {/* ========== END HEADER ========== */}
     </>
-  );
-};
+  )
+}
 
 export default NavBar

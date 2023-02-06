@@ -4,7 +4,10 @@ import NavBar from './components/NavBar'
 import Main from './components/Main'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
-// import Secondary from './components/Secondary'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import ResetPassword from './components/ResetPassword'
+// import Test from './components/Test'
 
 function App() {
   return (
@@ -13,9 +16,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        {/* <Route path="/test" element={<Test />}/> */}
       </Routes>
       <Footer />
-      {/* <Secondary /> */}
     </>
   )
 }

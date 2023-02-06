@@ -45,7 +45,7 @@
     -->
 
     <!-- Title -->
-    <title>Jobs: Listing | Front - Multipurpose Responsive Template</title>
+    <title>Hello Remote</title>
 
 
     <!--
@@ -61,11 +61,21 @@
     <script src="../assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
     <script src="../assets/vendor/nouislider/dist/nouislider.min.js"></script>
 
+    <script src="./assets/vendor/hs-header/dist/hs-header.min.js"></script>
+    <script src="./assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+    <script src="./assets/vendor/hs-toggle-password/dist/js/hs-toggle-password.js"></script>
+
     <!-- JS Front -->
     <script src="../assets/js/theme.min.js"></script>
+
     <!-- JS Plugins Init. -->
-    <script>
+    <!-- <script>
       (function() {
+        // INITIALIZATION OF HEADER
+        // =======================================================
+        new HSHeader('#header').init()
+
+
         // INITIALIZATION OF MEGA MENU
         // =======================================================
         new HSMegaMenu('.js-mega-menu', {
@@ -78,6 +88,16 @@
         // INITIALIZATION OF SHOW ANIMATIONS
         // =======================================================
         new HSShowAnimation('.js-animation-link')
+
+
+      // INITIALIZATION OF BOOTSTRAP VALIDATION
+      // =======================================================
+      HSBsValidation.init('.js-validate', {
+        onSubmit: data => {
+          data.event.preventDefault()
+          alert('Submited')
+        }
+      })
 
 
         // INITIALIZATION OF BOOTSTRAP DROPDOWN
@@ -93,8 +113,13 @@
         // INITIALIZATION OF NOUISLIDER`
         // =======================================================
         HSCore.components.HSNoUISlider.init('.js-nouislider')
+
+
+      // INITIALIZATION OF TOGGLE PASSWORD
+      // =======================================================
+      // new HSTogglePassword('.js-toggle-password')
       })()
-    </script>
+    </script> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
