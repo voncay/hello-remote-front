@@ -1,6 +1,29 @@
-import { Link } from 'react-router-dom'
+import React, { useState } from "react"
+import { login } from "../logic/UserFunctions"
+import { Link, useNavigate } from 'react-router-dom'
 
-const login = () => {
+const Signin = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  let navigate = useNavigate()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+
+    const user = {
+      email: email,
+      password: password,
+    }
+
+    login(user).then((res) => {
+      if (res) {
+        navigate('/recruiter-profile')
+      }
+    })
+  }
+
   return (
     <>
       {/* ========== MAIN CONTENT ========== */}
@@ -15,10 +38,17 @@ const login = () => {
             </div>
             {/* End Heading */}
             {/* Form */}
-            <form className="js-validate needs-validation" noValidate="">
+            <form 
+              className="needs-validation"
+              noValidate
+              onSubmit={ handleLogin }
+            >
               {/* Form */}
               <div className="mb-4">
-                <label className="form-label" htmlFor="signupSimpleLoginEmail">
+                <label 
+                  className="form-label"
+                  htmlFor="signupSimpleLoginEmail"
+                >
                   Your email
                 </label>
                 <input
@@ -28,7 +58,9 @@ const login = () => {
                   id="signupSimpleLoginEmail"
                   placeholder="email@site.com"
                   aria-label="email@site.com"
-                  required=""
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <span className="invalid-feedback">
                   Please enter a valid email address.
@@ -56,18 +88,19 @@ const login = () => {
                 >
                   <input
                     type="password"
-                    className="js-toggle-password form-control form-control-lg"
+                    className="form-control form-control-lg"
                     name="password"
                     id="signupSimpleLoginPassword"
                     placeholder="8+ characters required"
                     aria-label="8+ characters required"
                     required=""
                     minLength={8}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <a
                     id="changePassTarget"
                     className="input-group-append input-group-text"
-                    onClick={() => console.log('execute signup')}
                   >
                     <i id="changePassIcon" className="bi-eye" />
                   </a>
@@ -101,4 +134,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Signin
