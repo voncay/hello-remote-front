@@ -1,6 +1,32 @@
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { register } from '../logic/UserFunctions'
 
-const signup = () => {
+const Signup = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  // const [userType, setUserType] = useState('')
+
+  let navigate = useNavigate();
+
+  const createUser = e => {
+    e.preventDefault()
+
+    const newUser = {
+      // creates new object using useStates
+      email: email,
+      password: password,
+      user_type: 'recruiter', // to update!
+     }
+
+    register(newUser).then((res) => {
+      // calls the register function from UserFunctions.js and passes newUser as argument
+      navigate('/login') // then navigates to login
+    })
+  }
+
   return (
     <>
       {/* ========== MAIN CONTENT ========== */}
@@ -10,15 +36,21 @@ const signup = () => {
           <div className="flex-grow-1 mx-auto" style={{ maxWidth: "28rem" }}>
             {/* Heading */}
             <div className="text-center mb-5 mb-md-7">
-              <h1 className="h2">Welcome to Front</h1>
+              <h1 className="h2">Welcome to Hello Remote</h1>
               <p>Fill out the form to get started.</p>
             </div>
             {/* End Heading */}
             {/* Form */}
-            <form className="js-validate needs-validation" noValidate="">
+            <form
+              className=" needs-validation"
+              noValidate
+              onSubmit={ createUser }
+            >
               {/* Form */}
               <div className="mb-3">
-                <label className="form-label" htmlFor="signupSimpleSignupEmail">
+                <label 
+                  className="form-label" htmlFor="signupSimpleSignupEmail"
+                >
                   Your email
                 </label>
                 <input
@@ -28,7 +60,9 @@ const signup = () => {
                   id="signupSimpleSignupEmail"
                   placeholder="email@site.com"
                   aria-label="email@site.com"
-                  required=""
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <span className="invalid-feedback">
                   Please enter a valid email address.
@@ -43,23 +77,17 @@ const signup = () => {
                 >
                   Password
                 </label>
-                <div
-                  className="input-group input-group-merge"
-                >
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    id="signupSimpleSignupPassword"
-                    placeholder="8+ characters required"
-                    aria-label="8+ characters required"
-                  />
-                  <button
-                    className="input-group-append input-group-text"
-                    onClick={() => console.log('execute signup')}
-                  >
-                    <i className="bi-eye" />
-                  </button>
-                </div>
+                <input
+                  type="password"
+                  className="form-control form-control-lg"
+                  name="password"
+                  id="signupSimpleSignupPassword"
+                  placeholder="8+ characters required"
+                  aria-label="8+ characters required"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
                 <span className="invalid-feedback">
                   Your password is invalid. Please try again.
                 </span>
@@ -73,34 +101,24 @@ const signup = () => {
                 >
                   Confirm password
                 </label>
-                <div
-                  className="input-group input-group-merge"
-                >
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    name="confirmPassword"
-                    id="signupSimpleSignupConfirmPassword"
-                    placeholder="8+ characters required"
-                    aria-label="8+ characters required"
-
-                  />
-                  <button
-                    className="input-group-append input-group-text"
-                    onClick={() => console.log('execute signup')}
-                  >
-                    <i className="bi-eye" />
-                  </button>
-                </div>
+                <input
+                  type="password"
+                  className="form-control form-control-lg"
+                  name="confirmPassword"
+                  id="signupSimpleSignupConfirmPassword"
+                  placeholder="8+ characters required"
+                  aria-label="8+ characters required"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
                 <span className="invalid-feedback">
                   Password does not match the confirm password.
                 </span>
               </div>
               {/* End Form */}
               <div className="d-grid mb-3">
-                <button type="submit" className="btn btn-primary btn-lg"
-                  onClick={() => console.log('execute signup')}
-                >
+                <button type="submit" className="btn btn-primary btn-lg">
                   Sign up
                 </button>
               </div>
@@ -123,4 +141,4 @@ const signup = () => {
   )
 }
 
-export default signup;
+export default Signup;
