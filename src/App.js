@@ -7,6 +7,7 @@ import NotFound from './components/NotFound'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import ResetPassword from './components/ResetPassword'
+import RecruiterProfile from './components/RecruiterProfile'
 // import Test from './components/Test'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="recruiter-profile/:id" element={<RecruiterProfile />} />
         {/* <Route path="/test" element={<Test />}/> */}
       </Routes>
       <Footer />

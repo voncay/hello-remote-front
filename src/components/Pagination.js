@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Pagination = () => {
   return (
     <>
@@ -5,43 +7,43 @@ const Pagination = () => {
       <nav aria-label="Page navigation">
         <ul className="pagination justify-content-center">
           <li className="page-item disabled">
-            <a className="page-link" href="#" aria-label="Previous">
+            <Link className="page-link" to={'/'} aria-label="Previous">
               <span aria-hidden="true">
                 <i className="bi-chevron-double-left small" />
               </span>
-            </a>
+            </Link>
           </li>
           <li className="page-item active">
-            <a className="page-link" href="#">
+            <Link className="page-link" to={'/'}>
               1
-            </a>
+            </Link>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <Link className="page-link" to={'/'}>
               2
-            </a>
+            </Link>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <Link className="page-link" to={'/'}>
               3
-            </a>
+            </Link>
           </li>
           <li className="page-item disabled">
-            <a className="page-link" href="#">
+            <Link className="page-link" to={'/'}>
               ...
-            </a>
+            </Link>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
+            <Link className="page-link" to={'/'}>
               5
-            </a>
+            </Link>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#" aria-label="Next">
+            <Link className="page-link" to={'/'} aria-label="Next">
               <span aria-hidden="true">
                 <i className="bi-chevron-double-right small" />
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

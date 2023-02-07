@@ -13,8 +13,7 @@ const NavBar = () => {
             {/* Default Logo */}
             <Link to={'/'}
               className="navbar-brand"
-              href="../demo-jobs/index.html"
-              aria-label="Front"
+              aria-label="Hello Remote"
             >
               <img
                 style={{ width: '50px', height: 'auto' }}
