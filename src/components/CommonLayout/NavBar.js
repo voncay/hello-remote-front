@@ -20,6 +20,7 @@ const NavBar = () => {
 
     localStorage.removeItem('userToken')
     localStorage.removeItem('isLoggedin')
+    localStorage.removeItem('sessionUser')
     window.location.reload()
   }
 
