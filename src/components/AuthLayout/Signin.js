@@ -1,12 +1,17 @@
 import React, { useState } from "react"
-import { login } from "../logic/UserFunctions"
+import { useContext } from "react"
+
+import { login } from "../../logic/UserFunctions"
 import { Link, useNavigate } from 'react-router-dom'
+import { SessionContext } from "../../contexts/SessionContext"
+
 
 const Signin = () => {
 
+  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext);
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isLoggedin, setIsLoggedin] = useState(false)
 
   let navigate = useNavigate()
 
@@ -18,11 +23,11 @@ const Signin = () => {
       password: password,
     }
 
-    setIsLoggedin(true)
-
     login(user).then((res) => {
       if (res) {
-        navigate('/recruiter-profile', { state: { email: user.email, logStatus: isLoggedin }})
+        setIsLoggedin(true)
+        setSessionUser(user)
+        navigate('/recruiter-profile')
       }
     })
   }

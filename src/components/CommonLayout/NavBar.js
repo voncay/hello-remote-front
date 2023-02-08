@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom'
+import { useContext } from "react"
+
+import { SessionContext } from '../../contexts/SessionContext'
 
 const NavBar = () => {
+
+  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext);
+  console.log(isLoggedin, "isLoggedin")
+  console.log(sessionUser, "sessionUser")
+
+  const handleLogout = () => {
+
+  }
+
   return (
     <>
       {/* ========== HEADER ========== */}
@@ -9,7 +21,7 @@ const NavBar = () => {
         className="navbar navbar-expand-lg navbar-end navbar-light"
       >
         <div className="container">
-          <nav className="js-mega-menu navbar-nav-wrap">
+          <nav className="navbar-nav-wrap">
             {/* Default Logo */}
             <Link to={'/'}
               className="navbar-brand"
@@ -29,11 +41,43 @@ const NavBar = () => {
             {/* Collapse */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link className="nav-link " to={'/login'}>
-                    Login
-                  </Link>
-                </li>
+                { isLoggedin ?
+                  <>
+                    {/* Dropdown */}
+                    <li className="hs-has-sub-menu nav-item">
+                      <a
+                        id="listingsDropdown"
+                        className="hs-mega-menu-invoker nav-link dropdown-toggle active"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        {sessionUser.email}
+                      </a>
+                      <div
+                        className="dropdown-menu"
+                        aria-labelledby="listingsDropdown"
+                        style={{ minWidth: "14rem" }}
+                      >
+                        <Link className="dropdown-item active" to={'/'} onClick={ handleLogout }>
+                          Logout
+                        </Link>
+                        <Link className="dropdown-item" to={'/recruiter-profile'}>
+                          Profile
+                        </Link>
+                      </div>
+                    </li>
+                    {/* End Dropdown */}
+                  </>
+                  :
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link " to={'/login'}>
+                        Login
+                      </Link>
+                    </li>
+                  </>
+                }
                 <li className="nav-item">
                   <Link
                     className="btn btn-primary btn-transition"

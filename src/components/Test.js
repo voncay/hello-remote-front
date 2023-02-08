@@ -2515,7 +2515,6 @@ const Test = () => {
       {/* Go To */}
       <a
         className="js-go-to go-to position-fixed"
-        href="javascript:;"
         style={{ visibility: "hidden" }}
         data-hs-go-to-options='{
           "offsetTop": 700,

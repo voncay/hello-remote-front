@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from '../logic/UserFunctions'
+import { register } from '../../logic/UserFunctions'
 
 const SeekerForm = () => {
 
