@@ -1,4 +1,7 @@
 const Footer = () => {
+
+  const today = new Date()
+
   return (
     <>
       {/* ========== FOOTER ========== */}
@@ -9,7 +12,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="w-md-85 text-lg-center mx-lg-auto">
             <p className="text-white-50 small">
-              © 2023 Voncay. All rights reserved.
+              ©  { today.getFullYear() } Voncay. All rights reserved.
             </p>
           </div>
           {/* End Copyright */}
