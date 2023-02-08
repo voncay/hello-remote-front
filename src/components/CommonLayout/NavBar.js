@@ -5,12 +5,22 @@ import { SessionContext } from '../../contexts/SessionContext'
 
 const NavBar = () => {
 
-  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext);
+  // // Keep seesion despite reload
+  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
+  localStorage.isLoggedin === 'true' && setIsLoggedin(true)
+  setSessionUser(localStorage.sessionUser)
+
+  console.log(localStorage, "localStorage in Navbar")
+  console.log(localStorage.isLoggedin, "localStorage isLoggedin in Navbar")
   console.log(isLoggedin, "isLoggedin")
   console.log(sessionUser, "sessionUser")
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault()
 
+    localStorage.removeItem('userToken')
+    localStorage.removeItem('isLoggedin')
+    window.location.reload()
   }
 
   return (
@@ -52,7 +62,7 @@ const NavBar = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        {sessionUser.email}
+                        { sessionUser }
                       </a>
                       <div
                         className="dropdown-menu"

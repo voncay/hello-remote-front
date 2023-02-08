@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 
-import { SessionController } from "./contexts/SessionContext";
+import { SessionController } from './contexts/SessionContext'
 
 import NavBar   from './components/CommonLayout/NavBar'
 import Main     from './components/CommonLayout/Main'
@@ -39,4 +39,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

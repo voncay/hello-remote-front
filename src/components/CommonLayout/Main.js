@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+
+import { SessionContext } from "../../contexts/SessionContext"
 
 // import SearchBar from './SearchBar'
 import Pagination from './Pagination'

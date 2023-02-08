@@ -8,7 +8,7 @@ import { SessionContext } from "../../contexts/SessionContext"
 
 const Signin = () => {
 
-  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext);
+  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,8 +25,12 @@ const Signin = () => {
 
     login(user).then((res) => {
       if (res) {
+        setPassword('') // security
+        setEmail('')
         setIsLoggedin(true)
-        setSessionUser(user)
+        localStorage.setItem('isLoggedin', true)
+        localStorage.setItem('sessionUser', user.email)
+        setSessionUser(user.email)
         navigate('/recruiter-profile')
       }
     })
