@@ -6,6 +6,7 @@ const Signin = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoggedin, setIsLoggedin] = useState(false)
 
   let navigate = useNavigate()
 
@@ -17,9 +18,11 @@ const Signin = () => {
       password: password,
     }
 
+    setIsLoggedin(true)
+
     login(user).then((res) => {
       if (res) {
-        navigate('/recruiter-profile')
+        navigate('/recruiter-profile', { state: { email: user.email, logStatus: isLoggedin }})
       }
     })
   }

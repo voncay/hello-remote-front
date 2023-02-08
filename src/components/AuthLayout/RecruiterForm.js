@@ -1,30 +1,40 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from '../logic/UserFunctions'
+import { register } from '../../logic/UserFunctions'
 
-const Signup = () => {
+const RecruiterForm = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  // const [confirmPassword, setConfirmPassword] = useState('')
   // const [userType, setUserType] = useState('')
 
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
   const createUser = e => {
     e.preventDefault()
 
     const newUser = {
       // creates new object using useStates
+      // first_name: firstName,
+      // last_name: lastName,       // -> for profile
       email: email,
       password: password,
-      user_type: 'recruiter', // to update!
-     }
+      user_type: 'recruiter'      // -> if recruiter
+    //   company_name: "Jaxnation",
+    //   company_description: "Cras in purus eu magna vulputate luctus.",
+    //   recruiter_type: "head-hunter"   // -> radio in formulaire enum {head-hunter, in-house, none}
+    }
 
-    register(newUser).then((res) => {
+    const registeredUser = register(newUser).then((res) => {
       // calls the register function from UserFunctions.js and passes newUser as argument
       navigate('/login') // then navigates to login
     })
+
+    console.log(registeredUser, "registered user")
+
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -109,8 +119,8 @@ const Signup = () => {
                   placeholder="8+ characters required"
                   aria-label="8+ characters required"
                   required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  // value={confirmPassword}
+                  // onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <span className="invalid-feedback">
                   Password does not match the confirm password.
@@ -141,4 +151,4 @@ const Signup = () => {
   )
 }
 
-export default Signup;
+export default RecruiterForm;

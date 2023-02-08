@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
-import Main from './components/Main'
-import Footer from './components/Footer'
+import Main from './components/CommonLayout/Main'
+import Footer from './components/CommonLayout/Footer'
 import NotFound from './components/NotFound'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
-import ResetPassword from './components/ResetPassword'
-import RecruiterProfile from './components/RecruiterProfile'
+import ResetPassword from './components/SessionLayout/ResetPassword'
+import RecruiterProfile from './components/SessionLayout/RecruiterProfile'
 // import Test from './components/Test'
 
 function App() {

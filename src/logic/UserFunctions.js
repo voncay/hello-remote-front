@@ -1,14 +1,47 @@
-import axios from "axios";
+import axios from "axios"
 
-export const register = (abc) => {
+export const register = (user) => {
   return axios
     .post("http://localhost:8000/auth/register",
     {
-      email: abc.email,
-      password: abc.password,
-      user_type: abc.user_type
+      email:      user.email,
+      password:   user.password,
+      user_type:  user.user_type
     })
-    .then((res) => console.log("Registered"))
+    .then((response) => {
+      const registeredUser = response.data
+
+      if (user.user_type === 'recruiter' ) {
+        axios.post("http://localhost:8000/api/recruiters",
+        {
+          user_account:         registeredUser._id,
+          first_name:           user.first_name,
+          last_name:            user.last_name,
+          company_name:         user.company_name,
+          company_description:  user.company_description,
+          recruiter_type:       user.recruiter_type
+        })
+        .then(response => {
+          console.log(response.data, "recruiter profile created")
+        }).catch((err) => console.log(err))
+
+      } else {
+        axios.post("http://localhost:8000/api/seekers",
+        {
+          user_account:       registeredUser._id,
+          first_name:         user.first_name,
+          last_name:          user.last_name,
+          current_salary:     user.current_salary,
+          education_detail:   user.education_detail,
+          experience_detail:  user.experience_detail,
+          skill_set:          user.skill_set
+        })
+        .then(response => {
+          console.log(response.data, "seeker profile created")
+        }).catch((err) => console.log(err))
+      }
+
+    })
     .catch((err) => console.log(err))
 }
 
