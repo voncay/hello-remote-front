@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import SearchBar from './SearchBar'
+// import SearchBar from './SearchBar'
 import Pagination from './Pagination'
 
 const Main = () => {
@@ -17,7 +17,7 @@ const Main = () => {
   return (
     <>
       {/* ========== SEARCH BAR ========== */}
-      <SearchBar />
+      {/* <SearchBar /> */}
       {/* ========== END SEARCH BAR ========== */}
 
       {/* ========== MAIN CONTENT ========== */}
