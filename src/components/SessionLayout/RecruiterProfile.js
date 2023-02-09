@@ -12,7 +12,7 @@ const RecruiterProfile = () => {
                 <img
                   className="profile-cover-img"
                   src="../assets/img/1920x400/img1.jpg"
-                  alt="Image Description"
+                  alt="cover background"
                 />
               </div>
             </div>
@@ -23,7 +23,7 @@ const RecruiterProfile = () => {
                 <img
                   className="avatar avatar-xl profile-cover-avatar shadow-sm"
                   src="../assets/svg/brands/dropbox-icon.svg"
-                  alt="Image Description"
+                  alt="dropbox icon"
                 />
               </div>
               <div className="flex-grow-1">

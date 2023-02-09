@@ -11,7 +11,7 @@ import SignupSeeker     from './components/AuthLayout/SignupSeeker'
 import SignupRecruiter  from './components/AuthLayout/SignupRecruiter'
 // import ResetPassword    from './components/SessionLayout/ResetPassword' 
 
-import SeekerProfile    from './components/SessionLayout/SeekerProfile'
+import SeekerProfile    from './components/SessionLayout/seekerProfile'
 import RecruiterProfile from './components/SessionLayout/RecruiterProfile' // and company profile merge as one
 
 import PostJob from './components/SessionLayout/PostJob'  // form

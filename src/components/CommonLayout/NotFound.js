@@ -10,7 +10,7 @@ const NotFound = () => {
             <img
               className="img-fluid"
               src="./assets/svg/illustrations/oc-error.svg"
-              alt="Image Description"
+              alt="Error illustration"
               style={{ width: "30rem" }}
             />
           </div>
