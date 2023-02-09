@@ -10,10 +10,10 @@ const NavBar = () => {
   localStorage.userToken    && localStorage.userToken.length > 0 && setIsLoggedin(true)
   localStorage.sessionUser  && setSessionUser(localStorage.sessionUser)
 
-  // console.log(localStorage, "localStorage in Navbar")
-  // console.log(localStorage.isLoggedin, "localStorage isLoggedin in Navbar")
-  // console.log(isLoggedin, "isLoggedin")
-  // console.log(sessionUser, "sessionUser")
+  console.log(localStorage, "localStorage in Navbar")
+  console.log(localStorage.isLoggedin, "localStorage isLoggedin in Navbar")
+  console.log(isLoggedin, "isLoggedin")
+  console.log(sessionUser, "sessionUser")
 
   const handleLogout = (e) => {
     e.preventDefault()
