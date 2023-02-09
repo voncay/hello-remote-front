@@ -9,16 +9,16 @@ import NotFound from './components/CommonLayout/NotFound'
 import Signin   from './components/AuthLayout/Signin'
 import SignupSeeker     from './components/AuthLayout/SignupSeeker'
 import SignupRecruiter  from './components/AuthLayout/SignupRecruiter'
+// import ResetPassword    from './components/SessionLayout/ResetPassword' 
 
 import SeekerProfile    from './components/SessionLayout/SeekerProfile'
-import RecruiterProfile from './components/SessionLayout/RecruiterProfile'
+import RecruiterProfile from './components/SessionLayout/RecruiterProfile' // and company profile merge as one
 
-import PostJob from './components/AuthLayout/PostJob'
-
-import Test from './components/Test'
+import PostJob from './components/SessionLayout/PostJob'  // form
+import ApplyJob from './components/SessionLayout/ApplyJob'  // form
+import JobDetails from './components/CommonLayout/JobDetails'
 
 function App() {
-
   return (
     <>
       <SessionController>
@@ -32,7 +32,8 @@ function App() {
           <Route path="/seeker-profile" element={<SeekerProfile />} />
           <Route path="/recruiter-profile" element={<RecruiterProfile />} />
           <Route path="/post-job" element={<PostJob/>} />
-          <Route path="/test" element={<Test />}/>
+          <Route path='/apply-job' element={<ApplyJob />} />
+          <Route path='/job-details' element={<JobDetails />} />
         </Routes>
         <Footer />
       </SessionController>

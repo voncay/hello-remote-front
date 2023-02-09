@@ -2,6 +2,8 @@ import axios from "axios"
 
 export const register = async (user) => {
 
+  console.log(user, "user form register function")
+
   const savedUser = await axios
     // .post(`${process.env.API_URL_PORT}/api/register`,
     .post(`http://localhost:8000/auth/register`,

@@ -7,8 +7,8 @@ const NavBar = () => {
 
   // // Keep seesion despite reload
   const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
-  localStorage.isLoggedin === 'true' && setIsLoggedin(true)
-  localStorage.sessionUser && setSessionUser(localStorage.sessionUser)
+  localStorage.userToken    && localStorage.userToken.length > 0 && setIsLoggedin(true)
+  localStorage.sessionUser  && setSessionUser(localStorage.sessionUser)
 
   // console.log(localStorage, "localStorage in Navbar")
   // console.log(localStorage.isLoggedin, "localStorage isLoggedin in Navbar")
@@ -19,7 +19,7 @@ const NavBar = () => {
     e.preventDefault()
 
     localStorage.removeItem('userToken')
-    localStorage.removeItem('isLoggedin')
+    // localStorage.removeItem('isLoggedin')
     localStorage.removeItem('sessionUser')
     window.location.reload()
   }
@@ -56,15 +56,16 @@ const NavBar = () => {
                   <>
                     {/* Dropdown */}
                     <li className="hs-has-sub-menu nav-item">
-                      <a
+                      <span
                         id="listingsDropdown"
                         className="hs-mega-menu-invoker nav-link dropdown-toggle active"
                         role="button"
+                        // href='#'
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
                         { sessionUser }
-                      </a>
+                      </span>
                       <div
                         className="dropdown-menu"
                         aria-labelledby="listingsDropdown"

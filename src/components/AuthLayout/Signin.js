@@ -1,14 +1,14 @@
 import React, { useState } from "react"
-import { useContext } from "react"
+// import { useContext } from "react"
 
 import { login } from "../../logic/UserFunctions"
 import { Link, useNavigate } from 'react-router-dom'
-import { SessionContext } from "../../contexts/SessionContext"
+// import { SessionContext } from "../../contexts/SessionContext"
 
 
 const Signin = () => {
 
-  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
+  // const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,15 +25,16 @@ const Signin = () => {
 
     login(user).then((res) => {
       if (res) {
-        setPassword('') // security
-        setEmail('')
-        setIsLoggedin(true)
-        localStorage.setItem('isLoggedin', true)
+        // setIsLoggedin(true)
+        // setSessionUser(user.email)
         localStorage.setItem('sessionUser', user.email)
-        setSessionUser(user.email)
         navigate('/recruiter-profile')
+        // res.data.user_type === 'seeker' ? navigate('/seeker-profile') : navigate('/recruiter-profile')
       }
     })
+
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -110,12 +111,12 @@ const Signin = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <a
+                  <span
                     id="changePassTarget"
                     className="input-group-append input-group-text"
                   >
                     <i id="changePassIcon" className="bi-eye" />
-                  </a>
+                  </span>
                 </div>
                 <span className="invalid-feedback">
                   Please enter a valid password.

@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { register } from '../../logic/UserFunctions'
 
-const SignupSeeker = () => {
+const SignupRecruiter = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  // const [skillSet, setSkillSet] = useState('')
+  const [recruiterType, setRecruiterType] = useState('')
+  const [companyName, setCompanyName] = useState('')
+  const [companyDescription, setCompanyDescription] = useState('')
 
   let navigate = useNavigate()
 
@@ -20,22 +22,30 @@ const SignupSeeker = () => {
       email: email,
       password: password,
       first_name: firstName,
-      last_name: lastName,
-      user_type: 'seeker'
-      // skill_set: skillset
+      last_name: lastName,       // -> for profile
+      user_type: 'recruiter',      // -> if recruiter
+      // recruiter_type: recruiterType,   // -> radio => enum {head-hunter, in-house, none}
+      recruiter_type: 'in-house',   // -> debug
+      company_name: companyName,
+      company_description: companyDescription
     }
 
+    console.log(newUser, "new recruiter user")
+
     const registeredUser = register(newUser).then((res) => {
+      // calls the register function from UserFunctions.js and passes newUser as argument
       navigate('/login') // then navigates to login
     })
 
-    console.log(registeredUser, "registered seeker user")
+    console.log(registeredUser, "registered recruiter user")
 
-    setEmail('')
-    setPassword('')
-    setFirstName('')
-    setLastName('')
-    // setSkillSet('')
+    // setEmail('')
+    // setPassword('')
+    // setFirstName('')
+    // setLastName('')
+    // setRecruiterType('')
+    // setCompanyName('')
+    // setCompanyDescription('')
   }
 
   return (
@@ -48,7 +58,7 @@ const SignupSeeker = () => {
             {/* Heading */}
             <div className="text-center mb-5 mb-md-7">
               <h1 className="h2">Welcome to Hello Remote</h1>
-              <p>Fill out the <b>Candidat</b> form to get started.</p>
+              <p>Fill out the <b>Recruiter</b> form to get started.</p>
             </div>
             {/* End Heading */}
             {/* Form */}
@@ -105,28 +115,28 @@ const SignupSeeker = () => {
               </div>
               {/* End Form */}
               {/* Form Confirm */}
-                {/* <div className="mb-3">
-                  <label
-                    className="form-label"
-                    htmlFor="signupSimpleSignupConfirmPassword"
-                  >
-                    Confirm password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    name="confirmPassword"
-                    id="signupSimpleSignupConfirmPassword"
-                    placeholder="8+ characters required"
-                    aria-label="8+ characters required"
-                    required
-                    // value={confirmPassword}
-                    // onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                  <span className="invalid-feedback">
-                    Password does not match the confirm password.
-                  </span>
-                </div> */}
+              {/* <div className="mb-3">
+                <label
+                  className="form-label"
+                  htmlFor="signupSimpleSignupConfirmPassword"
+                >
+                  Confirm password
+                </label>
+                <input
+                  type="password"
+                  className="form-control form-control-lg"
+                  name="confirmPassword"
+                  id="signupSimpleSignupConfirmPassword"
+                  placeholder="8+ characters required"
+                  aria-label="8+ characters required"
+                  required
+                  // value={confirmPassword}
+                  // onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <span className="invalid-feedback">
+                  Password does not match the confirm password.
+                </span>
+              </div> */}
               {/* End Form */}
               {/* Form first name */}
               <div className="mb-3">
@@ -163,7 +173,7 @@ const SignupSeeker = () => {
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  name="password"
+                  name="lastname"
                   id="signupSimpleSignupLastName"
                   placeholder="Last Name"
                   aria-label="Last Name"
@@ -174,6 +184,89 @@ const SignupSeeker = () => {
                 <span className="invalid-feedback">
                   Please choose a Last Name.
                 </span>
+              </div>
+              {/* End Form */}
+              {/* Form company name */}
+              <div className="mb-3">
+                <label
+                  className="form-label"
+                  htmlFor="signupSimpleSignupCompanyName"
+                >
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  name="companyname"
+                  id="signupSimpleSignupCompanyName"
+                  placeholder="Company Name"
+                  aria-label="Company Name"
+                  required
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                />
+                <span className="invalid-feedback">
+                  Please add Company Name.
+                </span>
+              </div>
+              {/* End Form */}
+              {/* Form company description */}
+              <div className="mb-3">
+                <label
+                  className="form-label"
+                  htmlFor="signupSimpleSignupCompanyDescription"
+                >
+                  Company Description
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  name="companydescription"
+                  id="signupSimpleSignupCompanyDescription"
+                  placeholder="Company Description"
+                  aria-label="Company Description"
+                  required
+                  value={companyDescription}
+                  onChange={(e) => setCompanyDescription(e.target.value)}
+                />
+                <span className="invalid-feedback">
+                  Please add Company Description.
+                </span>
+              </div>
+              {/* End Form */}
+              {/* Form recruiter type */}
+              <div className="mb-3">
+                <p className="form-label">
+                  What type of recruiter are you ?
+                </p>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="recruiter-type"
+                    value="in-house"
+                    id="in-house"
+                    defaultChecked={recruiterType === 'in-house'}
+                    onChange={(e) => setRecruiterType(e.target.value)}
+                  />
+                  <label className="form-check-label" htmlFor="in-house">
+                    In House
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="recruiter-type"
+                    value="head-hunter"
+                    id="head-hunter"
+                    checked={recruiterType === 'head-hunter'}
+                    onChange={(e) => setRecruiterType(e.target.value)}
+                  />
+                  <label className="form-check-label" htmlFor="head-hunter">
+                    Head Hunter
+                  </label>
+                </div>
               </div>
               {/* End Form */}
               <div className="d-grid mb-3">
@@ -200,4 +293,4 @@ const SignupSeeker = () => {
   )
 }
 
-export default SignupSeeker
+export default SignupRecruiter;
