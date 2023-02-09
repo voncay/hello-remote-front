@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { register } from '../../logic/UserFunctions'
 
-const SeekerForm = () => {
+const SignupSeeker = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [confirmPassword, setConfirmPassword] = useState('')
-  // const [userType, setUserType] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  // const [skillSet, setSkillSet] = useState('')
 
   let navigate = useNavigate()
 
@@ -16,25 +17,24 @@ const SeekerForm = () => {
 
     const newUser = {
       // creates new object using useStates
-      // first_name: firstName,
-      // last_name: lastName,       // -> for profile
       email: email,
       password: password,
-      user_type: 'recruiter'      // -> if recruiter
-    //   company_name: "Jaxnation",
-    //   company_description: "Cras in purus eu magna vulputate luctus.",
-    //   recruiter_type: "head-hunter"   // -> radio in formulaire enum {head-hunter, in-house, none}
+      first_name: firstName,
+      last_name: lastName,
+      user_type: 'seeker'
+      // skill_set: skillset
     }
 
     const registeredUser = register(newUser).then((res) => {
-      // calls the register function from UserFunctions.js and passes newUser as argument
       navigate('/login') // then navigates to login
     })
 
-    // console.log(registeredUser, "registered user")
+    console.log(registeredUser, "registered user")
 
     setEmail('')
     setPassword('')
+    setFirstName('')
+    setLastName('')
   }
 
   return (
@@ -47,7 +47,7 @@ const SeekerForm = () => {
             {/* Heading */}
             <div className="text-center mb-5 mb-md-7">
               <h1 className="h2">Welcome to Hello Remote</h1>
-              <p>Fill out the form to get started.</p>
+              <p>Fill out the <b>Candidat</b> form to get started.</p>
             </div>
             {/* End Heading */}
             {/* Form */}
@@ -56,7 +56,7 @@ const SeekerForm = () => {
               noValidate
               onSubmit={ createUser }
             >
-              {/* Form */}
+              {/* Form email*/}
               <div className="mb-3">
                 <label 
                   className="form-label" htmlFor="signupSimpleSignupEmail"
@@ -79,7 +79,7 @@ const SeekerForm = () => {
                 </span>
               </div>
               {/* End Form */}
-              {/* Form */}
+              {/* Form password */}
               <div className="mb-3">
                 <label
                   className="form-label"
@@ -103,27 +103,75 @@ const SeekerForm = () => {
                 </span>
               </div>
               {/* End Form */}
-              {/* Form */}
+              {/* Form Confirm */}
+                {/* <div className="mb-3">
+                  <label
+                    className="form-label"
+                    htmlFor="signupSimpleSignupConfirmPassword"
+                  >
+                    Confirm password
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control form-control-lg"
+                    name="confirmPassword"
+                    id="signupSimpleSignupConfirmPassword"
+                    placeholder="8+ characters required"
+                    aria-label="8+ characters required"
+                    required
+                    // value={confirmPassword}
+                    // onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                  <span className="invalid-feedback">
+                    Password does not match the confirm password.
+                  </span>
+                </div> */}
+              {/* End Form */}
+              {/* Form first name */}
               <div className="mb-3">
                 <label
                   className="form-label"
-                  htmlFor="signupSimpleSignupConfirmPassword"
+                  htmlFor="signupSimpleSignupFirstName"
                 >
-                  Confirm password
+                  First Name
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   className="form-control form-control-lg"
-                  name="confirmPassword"
-                  id="signupSimpleSignupConfirmPassword"
-                  placeholder="8+ characters required"
-                  aria-label="8+ characters required"
+                  name="firstName"
+                  id="signupSimpleSignupFirstName"
+                  placeholder="First Name"
+                  aria-label="First Name"
                   required
-                  // value={confirmPassword}
-                  // onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
                 <span className="invalid-feedback">
-                  Password does not match the confirm password.
+                  Please choose a First Name.
+                </span>
+              </div>
+              {/* End Form */}
+              {/* Form last name */}
+              <div className="mb-3">
+                <label
+                  className="form-label"
+                  htmlFor="signupSimpleSignupLastName"
+                >
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control form-control-lg"
+                  name="password"
+                  id="signupSimpleSignupLastName"
+                  placeholder="Last Name"
+                  aria-label="Last Name"
+                  required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <span className="invalid-feedback">
+                  Please choose a Last Name.
                 </span>
               </div>
               {/* End Form */}
@@ -151,4 +199,4 @@ const SeekerForm = () => {
   )
 }
 
-export default SeekerForm;
+export default SignupSeeker

@@ -129,9 +129,18 @@ const Signin = () => {
               </div>
               <div className="text-center">
                 <p>
-                  Don't have an account yet?{" "}
-                  <Link className="link" to={'/signup'}>
-                    Sign up here
+                  Don't have an account yet?
+                </p>
+                <p>
+                  Sign up as a {' '}
+                  <Link className="link" to={'/signup-candidat'}>
+                    Candidat
+                  </Link>
+                </p>
+                <p>
+                  Or as a {' '}
+                  <Link className="link" to={'/signup-recruiter'}>
+                    Recruiter
                   </Link>
                 </p>
               </div>
