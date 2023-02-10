@@ -23,11 +23,15 @@ const Signin = () => {
       password: password,
     }
 
+/// fetch
+    
     login(user).then((res) => {
       if (res) {
         // setIsLoggedin(true)
         // setSessionUser(user.email)
+        console.log(res, "res from login")
         localStorage.setItem('sessionUser', user.email)
+        localStorage.setItem('sessionUserType', res.type)
         // res.data.user_type === 'seeker' ? navigate('/seeker-profile') : navigate('/recruiter-profile')
         navigate('/')
         window.location.reload()

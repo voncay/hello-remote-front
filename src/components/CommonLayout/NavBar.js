@@ -5,6 +5,8 @@ import { SessionContext } from '../../contexts/SessionContext'
 
 const NavBar = () => {
 
+
+
   // // Keep seesion despite reload
   const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
   localStorage.userToken    && localStorage.userToken.length > 0 && setIsLoggedin(true)
@@ -18,9 +20,7 @@ const NavBar = () => {
   const handleLogout = (e) => {
     e.preventDefault()
 
-    localStorage.removeItem('userToken')
-    // localStorage.removeItem('isLoggedin')
-    localStorage.removeItem('sessionUser')
+    localStorage.clear()
     window.location.reload()
   }
 
@@ -71,7 +71,7 @@ const NavBar = () => {
                         aria-labelledby="listingsDropdown"
                         style={{ minWidth: "14rem" }}
                       >
-                        <Link className="dropdown-item" to={'/recruiter-profile'}>
+                        <Link className="dropdown-item" to={`/${localStorage.sessionUserType}-profile`}>
                           Profile
                         </Link>
                         <Link className="dropdown-item active" to={'/'} onClick={ handleLogout }>

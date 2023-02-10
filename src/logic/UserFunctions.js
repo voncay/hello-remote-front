@@ -83,7 +83,7 @@ export const login = (user) => {
     })
     .then((res) => {
       // console.log(res.headers.get('auth-token'))
-      localStorage.setItem("userToken", res.data) // sets a usertoken into the localstorage coming from res.data
+      localStorage.setItem("userToken", res.data.token) // sets a usertoken into the localstorage coming from res.data
       return res.data
     })
     .catch((err) => console.error(err))
