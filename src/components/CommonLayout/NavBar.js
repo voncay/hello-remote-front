@@ -5,8 +5,6 @@ import { SessionContext } from '../../contexts/SessionContext'
 
 const NavBar = () => {
 
-
-
   // // Keep seesion despite reload
   const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
   localStorage.userToken    && localStorage.userToken.length > 0 && setIsLoggedin(true)
@@ -33,22 +31,45 @@ const NavBar = () => {
       >
         <div className="container">
           <nav className="navbar-nav-wrap">
+
             {/* Default Logo */}
-            <Link to={'/'}
-              className="navbar-brand"
-              aria-label="Hello Remote"
-            >
-              <img
-                style={{ width: '50px', height: 'auto' }}
-                // className="navbar-brand-logo"
-                src="../assets/svg/logos/android-chrome-192x192.png"
-                alt="Logo"
-              />
-            </Link>
-            <div>
-              <span><b>H</b>ello <b>R</b>emote</span>
-            </div>
+            <>
+              <Link to={'/'}
+                className="navbar-brand"
+                aria-label="Hello Remote"
+              >
+                <img
+                  style={{ width: '50px', height: 'auto' }}
+                  // className="navbar-brand-logo"
+                  src="../assets/svg/logos/android-chrome-192x192.png"
+                  alt="Logo"
+                />
+              </Link>
+              <div>
+                <span><b>H</b>ello <b>R</b>emote</span>
+              </div>
+            </>
             {/* End Default Logo */}
+
+            {/* Toggler */}
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-default">
+                <i className="bi-list" />
+              </span>
+              <span className="navbar-toggler-toggled">
+                <i className="bi-x" />
+              </span>
+            </button>
+            {/* End Toggler */}
+
             {/* Collapse */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
