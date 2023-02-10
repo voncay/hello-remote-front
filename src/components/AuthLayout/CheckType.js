@@ -2,9 +2,8 @@ import {Navigate, Outlet} from 'react-router-dom'
 
 const CheckType = ({user_type}) => {
 
-  const token = localStorage.userToken
-  const type = localStorage.sessionUserType
-
+  const token = localStorage.sessionUserToken
+  const type  = localStorage.sessionUserType
 
   return (
     <>

@@ -38,7 +38,7 @@ export const register = async (user) => {
         related_company:      savedCompany._id
       })
       .then(response => {
-        console.log(response.data, "recruiter profile created")
+        console.log(response.data, "Recruiter profile created.")
         return response.data
       }).catch((err) => console.log(err))
   } else {
@@ -53,7 +53,7 @@ export const register = async (user) => {
         // skill_set:          user.skill_set
       })
       .then(response => {
-        console.log(response.data, "seeker profile created")
+        console.log(response.data, "Seeker profile created.")
         return response.data
       }).catch((err) => console.log(err))
   }
@@ -77,7 +77,8 @@ export const login = (user) => {
     })
     .then((res) => {
       // console.log(res.headers.get('auth-token'))
-      localStorage.setItem("userToken", res.data.token) // sets a usertoken into the localstorage coming from res.data
+      // localStorage.setItem("sessionUserToken", res.data.token) // sets a usertoken into the localstorage coming from res.data
+      console.log(res.data, "logged in.")
       return res.data
     })
     .catch((err) => console.error(err))

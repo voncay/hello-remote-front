@@ -29,14 +29,15 @@ const SignupRecruiter = () => {
       company_description: companyDescription
     }
 
-    console.log(newUser, "new recruiter user")
+    // console.log(newUser, "new recruiter user")
 
-    const registeredUser = register(newUser).then((res) => {
+    // const registeredUser = register(newUser).then((res) => {
+    register(newUser).then((res) => {
       // calls the register function from UserFunctions.js and passes newUser as argument
       navigate('/login') // then navigates to login
     })
 
-    console.log(registeredUser, "registered recruiter user")
+    // console.log(registeredUser, "registered recruiter user")
 
     setEmail('')
     setPassword('')

@@ -1,14 +1,9 @@
 import React, { useState } from "react"
-// import { useContext } from "react"
 
 import { login } from "../../logic/UserFunctions"
 import { Link, useNavigate } from 'react-router-dom'
-// import { SessionContext } from "../../contexts/SessionContext"
-
 
 const Signin = () => {
-
-  // const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,18 +17,15 @@ const Signin = () => {
       email: email,
       password: password,
     }
-
-/// fetch
     
     login(user).then((res) => {
       if (res) {
-        // setIsLoggedin(true)
-        // setSessionUser(user.email)
         console.log(res, "res from login")
-        localStorage.setItem('sessionUser', user.email)
+        localStorage.setItem("sessionUserToken", res.token)
         localStorage.setItem('sessionUserType', res.type)
-        // res.data.user_type === 'seeker' ? navigate('/seeker-profile') : navigate('/recruiter-profile')
-        navigate('/')
+        localStorage.setItem('sessionUserEmail', res.email)
+        localStorage.setItem('isLoggedin', 'true')
+        res.type === 'seeker' ? navigate('/seeker-profile') : navigate('/recruiter-profile')
         window.location.reload()
       }
     })

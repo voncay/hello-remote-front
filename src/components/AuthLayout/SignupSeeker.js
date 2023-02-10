@@ -25,11 +25,12 @@ const SignupSeeker = () => {
       // skill_set: skillset
     }
 
-    const registeredUser = register(newUser).then((res) => {
+    // const registeredUser = register(newUser).then((res) => {
+    register(newUser).then((res) => {
       navigate('/login') // then navigates to login
     })
 
-    console.log(registeredUser, "registered seeker user")
+    // console.log(registeredUser, "registered seeker user")
 
     setEmail('')
     setPassword('')

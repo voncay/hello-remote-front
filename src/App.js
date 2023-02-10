@@ -12,7 +12,6 @@ import SignupRecruiter  from './components/AuthLayout/SignupRecruiter'
 import ResetPassword    from './components/SessionLayout/ResetPassword'
 import CheckType from './components/AuthLayout/CheckType'
 
-
 import SeekerProfile    from './components/SessionLayout/seekerProfile'
 import RecruiterProfile from './components/SessionLayout/RecruiterProfile' // and company profile merge as one
 

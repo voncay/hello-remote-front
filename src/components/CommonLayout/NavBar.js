@@ -1,19 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useContext } from "react"
-
-import { SessionContext } from '../../contexts/SessionContext'
 
 const NavBar = () => {
-
-  // // Keep seesion despite reload
-  const [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] = useContext(SessionContext)
-  localStorage.userToken    && localStorage.userToken.length > 0 && setIsLoggedin(true)
-  localStorage.sessionUser  && setSessionUser(localStorage.sessionUser)
-
-  console.log(localStorage, "localStorage in Navbar")
-  console.log(localStorage.isLoggedin, "localStorage isLoggedin in Navbar")
-  console.log(isLoggedin, "isLoggedin")
-  console.log(sessionUser, "sessionUser")
 
   const handleLogout = (e) => {
     e.preventDefault()
@@ -73,7 +60,7 @@ const NavBar = () => {
             {/* Collapse */}
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
-                { isLoggedin ?
+                { localStorage.isLoggedin === 'true' ?
                   <>
                     {/* Dropdown */}
                     <li className="hs-has-sub-menu nav-item">
@@ -85,7 +72,7 @@ const NavBar = () => {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        { sessionUser }
+                        { localStorage.sessionUserEmail }
                       </span>
                       <div
                         className="dropdown-menu"
