@@ -5,8 +5,7 @@ export const register = async (user) => {
   console.log(user, "user form register function")
 
   const savedUser = await axios
-    // .post(`${process.env.API_URL_PORT}/api/register`,
-    .post(`http://localhost:8000/auth/register`,
+    .post(`${process.env.REACT_APP_API_URL}/auth/register`,
     {
       email:      user.email,
       password:   user.password,
@@ -18,29 +17,25 @@ export const register = async (user) => {
     }).catch((err) => console.log(err))
 
   if (user.user_type === 'recruiter' ) {
-    // const savedCompany = await axios
-    //   // .post(`${process.env.API_URL_PORT}/api/companies`,
-    //   .post(`http://localhost:8000/api/companies`,
-    //   {
-    //     company_name:         user.company_name,
-    //     company_description:  user.company_description
-    //   })
-    //   .then(response => {
-    //     console.log(response.data, "company created!")
-    //     return response.data
-    //   }).catch((err) => console.log(err))
+    const savedCompany = await axios
+      .post(`${process.env.REACT_APP_API_URL}/api/companies`,
+      {
+        company_name:         user.company_name,
+        company_description:  user.company_description
+      })
+      .then(response => {
+        console.log(response.data, "company created!")
+        return response.data
+      }).catch((err) => console.log(err))
 
     return await axios
-      // .post(`${process.env.API_URL_PORT}/api/recruiters`,
-      .post(`http://localhost:8000/api/recruiters`,
+      .post(`${process.env.REACT_APP_API_URL}/api/recruiters`,
       {
         user_account:         savedUser._id,
         first_name:           user.first_name,
         last_name:            user.last_name,
         recruiter_type:       user.recruiter_type,
-        company_name:         user.company_name,
-        company_description:  user.company_description
-        // related_company:      savedCompany._id
+        related_company:      savedCompany._id
       })
       .then(response => {
         console.log(response.data, "recruiter profile created")
@@ -48,8 +43,7 @@ export const register = async (user) => {
       }).catch((err) => console.log(err))
   } else {
     return await axios
-      // .post(`${process.env.API_URL_PORT}/api/seekers`,
-      .post(`http://localhost:8000/api/seekers`,
+      .post(`${process.env.REACT_APP_API_URL}/api/seekers`,
       {
         user_account:       savedUser._id,
         first_name:         user.first_name,
@@ -76,7 +70,7 @@ export const deleteuser = (user) => {
 
 export const login = (user) => {
   return axios
-    .post("http://localhost:8000/auth/login",
+    .post(`${process.env.REACT_APP_API_URL}/auth/login`,
     {
       email: user.email,
       password: user.password

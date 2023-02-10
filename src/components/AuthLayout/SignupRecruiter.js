@@ -23,7 +23,7 @@ const SignupRecruiter = () => {
       password: password,
       first_name: firstName,
       last_name: lastName,       // -> for profile
-      user_type: 'recruiter',      // -> if recruiter
+      user_type: 'recruiter',     
       recruiter_type: recruiterType,   // -> radio
       company_name: companyName,
       company_description: companyDescription
@@ -246,10 +246,7 @@ const SignupRecruiter = () => {
                     value="in-house"
                     id="in-house"
                     defaultChecked={recruiterType === 'in-house'}
-                    onChange={(e) => {
-                      setRecruiterType(e.target.value)
-                      console.log(e.target.value, "recruiterType")
-                    }}
+                    onChange={(e) => setRecruiterType(e.target.value)}
                   />
                   <label className="form-check-label" htmlFor="in-house">
                     In House
@@ -263,10 +260,7 @@ const SignupRecruiter = () => {
                     value="head-hunter"
                     id="head-hunter"
                     checked={recruiterType === 'head-hunter'}
-                    onChange={(e) => { 
-                      setRecruiterType(e.target.value)
-                      console.log(e.target.value, "recruiterType")
-                    }}
+                    onChange={(e) => setRecruiterType(e.target.value)}
                   />
                   <label className="form-check-label" htmlFor="head-hunter">
                     Head Hunter
