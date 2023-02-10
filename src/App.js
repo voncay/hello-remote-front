@@ -29,11 +29,10 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Signin />} />
-          <Route path='reset-password' element={<ResetPassword />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
           <Route path="/signup-candidat" element={<SignupSeeker />} />
           <Route path="/signup-recruiter" element={<SignupRecruiter />} />
           <Route path='/job-details' element={<JobDetails />} />
-
 
           <Route element={<CheckType user_type={'seeker'} />} >
             <Route path="/seeker-profile" element={<SeekerProfile />} />
