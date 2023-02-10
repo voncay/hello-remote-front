@@ -28,8 +28,9 @@ const Signin = () => {
         // setIsLoggedin(true)
         // setSessionUser(user.email)
         localStorage.setItem('sessionUser', user.email)
-        navigate('/recruiter-profile')
         // res.data.user_type === 'seeker' ? navigate('/seeker-profile') : navigate('/recruiter-profile')
+        navigate('/')
+        window.location.reload()
       }
     })
 

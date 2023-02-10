@@ -71,11 +71,11 @@ const NavBar = () => {
                         aria-labelledby="listingsDropdown"
                         style={{ minWidth: "14rem" }}
                       >
-                        <Link className="dropdown-item active" to={'/'} onClick={ handleLogout }>
-                          Logout
-                        </Link>
                         <Link className="dropdown-item" to={'/recruiter-profile'}>
                           Profile
+                        </Link>
+                        <Link className="dropdown-item active" to={'/'} onClick={ handleLogout }>
+                          Logout
                         </Link>
                       </div>
                     </li>
