@@ -9,7 +9,7 @@ import NotFound from './components/CommonLayout/NotFound'
 import Signin   from './components/AuthLayout/Signin'
 import SignupSeeker     from './components/AuthLayout/SignupSeeker'
 import SignupRecruiter  from './components/AuthLayout/SignupRecruiter'
-// import ResetPassword    from './components/SessionLayout/ResetPassword'
+import ResetPassword    from './components/SessionLayout/ResetPassword'
 import CheckType from './components/AuthLayout/CheckType'
 
 
@@ -29,9 +29,11 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Signin />} />
+          <Route path='reset-password' element={<ResetPassword />} />
           <Route path="/signup-candidat" element={<SignupSeeker />} />
           <Route path="/signup-recruiter" element={<SignupRecruiter />} />
           <Route path='/job-details' element={<JobDetails />} />
+
 
           <Route element={<CheckType user_type={'seeker'} />} >
             <Route path="/seeker-profile" element={<SeekerProfile />} />
