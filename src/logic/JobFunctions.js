@@ -3,7 +3,7 @@ import axios from "axios"
 // export const postjob = (job, recruiter) => {
 export const postjob = (job) => {
   return axios
-    .post(`${process.env.REACT_APP_API_URL}/api/postjob`,
+    .post(`${process.env.REACT_APP_API_URL}/api/jobs`,
     {
       job_title:          job.title,
       job_description:    job.description,

@@ -104,9 +104,9 @@ const PostJob = () => {
                           value={jobCountry}
                           onChange={(e) => setJobCountry(e.target.value)}
                         >
-                          {countries.map( country => {
+                          {countries.map( (country, index) => {
                             return (
-                              <option value={country.value}>{country.label}</option>
+                              <option key={index} value={country.value}>{country.label}</option>
                             )
                           })}
                         </select>
