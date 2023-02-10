@@ -24,8 +24,7 @@ const SignupRecruiter = () => {
       first_name: firstName,
       last_name: lastName,       // -> for profile
       user_type: 'recruiter',      // -> if recruiter
-      // recruiter_type: recruiterType,   // -> radio => enum {head-hunter, in-house, none}
-      recruiter_type: 'in-house',   // -> debug
+      recruiter_type: recruiterType,   // -> radio
       company_name: companyName,
       company_description: companyDescription
     }
@@ -39,13 +38,13 @@ const SignupRecruiter = () => {
 
     console.log(registeredUser, "registered recruiter user")
 
-    // setEmail('')
-    // setPassword('')
-    // setFirstName('')
-    // setLastName('')
-    // setRecruiterType('')
-    // setCompanyName('')
-    // setCompanyDescription('')
+    setEmail('')
+    setPassword('')
+    setFirstName('')
+    setLastName('')
+    setRecruiterType('')
+    setCompanyName('')
+    setCompanyDescription('')
   }
 
   return (
@@ -247,7 +246,10 @@ const SignupRecruiter = () => {
                     value="in-house"
                     id="in-house"
                     defaultChecked={recruiterType === 'in-house'}
-                    onChange={(e) => setRecruiterType(e.target.value)}
+                    onChange={(e) => {
+                      setRecruiterType(e.target.value)
+                      console.log(e.target.value, "recruiterType")
+                    }}
                   />
                   <label className="form-check-label" htmlFor="in-house">
                     In House
@@ -261,7 +263,10 @@ const SignupRecruiter = () => {
                     value="head-hunter"
                     id="head-hunter"
                     checked={recruiterType === 'head-hunter'}
-                    onChange={(e) => setRecruiterType(e.target.value)}
+                    onChange={(e) => { 
+                      setRecruiterType(e.target.value)
+                      console.log(e.target.value, "recruiterType")
+                    }}
                   />
                   <label className="form-check-label" htmlFor="head-hunter">
                     Head Hunter

@@ -18,17 +18,17 @@ export const register = async (user) => {
     }).catch((err) => console.log(err))
 
   if (user.user_type === 'recruiter' ) {
-    const savedCompany = await axios
-      // .post(`${process.env.API_URL_PORT}/api/companies`,
-      .post(`http://localhost:8000/api/companies`,
-      {
-        company_name:         user.company_name,
-        company_description:  user.company_description
-      })
-      .then(response => {
-        console.log(response.data, "company created!")
-        return response.data
-      }).catch((err) => console.log(err))
+    // const savedCompany = await axios
+    //   // .post(`${process.env.API_URL_PORT}/api/companies`,
+    //   .post(`http://localhost:8000/api/companies`,
+    //   {
+    //     company_name:         user.company_name,
+    //     company_description:  user.company_description
+    //   })
+    //   .then(response => {
+    //     console.log(response.data, "company created!")
+    //     return response.data
+    //   }).catch((err) => console.log(err))
 
     return await axios
       // .post(`${process.env.API_URL_PORT}/api/recruiters`,
@@ -38,7 +38,9 @@ export const register = async (user) => {
         first_name:           user.first_name,
         last_name:            user.last_name,
         recruiter_type:       user.recruiter_type,
-        related_company:      savedCompany._id
+        company_name:         user.company_name,
+        company_description:  user.company_description
+        // related_company:      savedCompany._id
       })
       .then(response => {
         console.log(response.data, "recruiter profile created")
