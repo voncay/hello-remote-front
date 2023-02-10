@@ -1,8 +1,31 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { postjob } from '../../logic/JobFunctions'
 
 const PostJob = () => {
+
+  const countries = [
+    {
+      label: 'Select a Country',
+      value: ''
+    },
+    { 
+      label: 'France',
+      value: 'FR'
+    },
+    {
+      label: 'Italy',
+      value: 'IT'
+    },
+    {
+      label: 'England',
+      value: 'UK'
+    },
+    {
+      label: 'Germany',
+      value: 'DE'
+    }
+  ]
 
   const [jobTitle, setJobTitle] = useState('')
   const [jobDescription, setJobDescription] = useState('')
@@ -10,14 +33,18 @@ const PostJob = () => {
 
   let navigate = useNavigate()
 
+  // console.log(jobCountry, "jobCountry")
+
   const createJob = e => {
     e.preventDefault()
 
     const newJob = {
-      job_title:          jobTitle,
-      job_description:    jobDescription,
-      job_location:       jobCountry
+      title:          jobTitle,
+      description:    jobDescription,
+      location:       jobCountry
     }
+
+    console.log(newJob, "new job")
 
     const postedJob = postjob(newJob).then((res) => {
       // calls the register function from UserFunctions.js and passes newUser as argument
@@ -38,7 +65,7 @@ const PostJob = () => {
         {/* Content */}
         {/* <div className="container content-space-2"> */}
           {/* Step Form */}
-          <form style={{ paddingTop: '40px' }} onSubmit={ createJob }>
+          <form style={{ paddingTop: '40px' }} onSubmit={ event => createJob(event) }>
           {/* <form style={{ paddingTop: '40px' }} > */}
             <div className="container-md">
               {/* End Col */}
@@ -74,11 +101,14 @@ const PostJob = () => {
                           id="countryLabel"
                           className="form-select"
                           name="countrySelect"
+                          value={jobCountry}
+                          onChange={(e) => setJobCountry(e.target.value)}
                         >
-                          <option value="FR">France</option>
-                          <option value="IT">Italy</option>
-                          <option value="UK">England</option>
-                          <option value="DE">Germany</option>
+                          {countries.map( country => {
+                            return (
+                              <option value={country.value}>{country.label}</option>
+                            )
+                          })}
                         </select>
                         {/* End Select */}
                       </div>
@@ -95,6 +125,9 @@ const PostJob = () => {
                           id="jobTitleLabel"
                           placeholder="UI/UX Designer"
                           aria-label="UI/UX Designer"
+                          required
+                          value={jobTitle}
+                          onChange={(e) => setJobTitle(e.target.value)}
                         />
                       </div>
                       {/* End Form */}
@@ -110,6 +143,9 @@ const PostJob = () => {
                           id="jobDescriptionLabel"
                           placeholder="Job Description"
                           aria-label="Job Description"
+                          required
+                          value={jobDescription}
+                          onChange={(e) => setJobDescription(e.target.value)}
                         />
                       </div>
                       {/* End Form */}
@@ -118,15 +154,13 @@ const PostJob = () => {
                     {/* Footer */}
                     <div className="card-footer pt-0">
                       <div className="d-flex justify-content-end align-items-center">
-                        <Link to={'/'}>
                         <button
-                          type="button"
+                          type="submit"
                           className="btn btn-primary"
                         >
                           Save{" "}
                           <i className="bi-chevron-right small ms-1" />
                         </button>
-                        </Link>
                       </div>
                     </div>
                     {/* End Footer */}
