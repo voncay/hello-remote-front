@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const SessionContext = createContext()
 
@@ -11,7 +11,7 @@ export const SessionController = (props) => {
   return(
     // <SessionContext.Provider value={ user }>
     // <SessionContext.Provider value={ [isLoggedin, setIsLoggedin, sessionUser, setSessionUser] }>
-    <SessionContext.Provider>
+    <SessionContext.Provider value=''>
       {props.children}
     </SessionContext.Provider>
   )

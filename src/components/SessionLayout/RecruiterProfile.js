@@ -1,4 +1,28 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 const RecruiterProfile = () => {
+
+  const [profileData, setProfileData] = useState([]);
+
+  const fetchProfileData = async () => {
+    const token = localStorage.sessionUserToken
+    await axios.get(`${process.env.REACT_APP_API_URL}/api/recruiter`,
+      { headers: {
+        'auth-token': token
+      }}
+    )
+    .then(res => {
+        setProfileData(res.data)
+        console.log(res.data, "profileData")
+    })
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    fetchProfileData();
+  }, [])
+
   return (
     <>
       {/* ========== MAIN CONTENT ========== */}
